@@ -1,1 +1,68 @@
 /* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+//
+@keyframes slide-in-70 {
+  0% {
+      transform: translateY(-70px)
+  }
+}
+
+@keyframes slide-out-70 {
+  to {
+      transform: translateY(-70px)
+  }
+}
+
+//
+@keyframes slide-in-300 {
+  0% {
+      transform: translateY(-300px)
+  }
+}
+
+@keyframes slide-out-300 {
+  to {
+      transform: translateY(-300px)
+  }
+}
+
+//
+::view-transition-new(main-nav):only-child {
+  animation: .15s cubic-bezier(.4,0,.2,1) both slide-in-70
+}
+
+::view-transition-old(main-nav):only-child {
+  animation: .15s cubic-bezier(.4,0,.2,1) both slide-out-70
+}
+
+//
+::view-transition-new(main-title):only-child {
+  animation: .25s cubic-bezier(.4,0,.2,1) both slide-in-300
+}
+
+::view-transition-old(main-title):only-child {
+  animation: .25s cubic-bezier(.4,0,.2,1) both slide-out-300
+}
+
+@keyframes slide-in {
+  0% {
+    transform: translateY(-70px)
+  }
+}
+
+@keyframes slide-out {
+  to {
+    transform: translateY(-70px)
+  }
+}
+
+::view-transition-new(main-nav):only-child {
+  animation: .25s cubic-bezier(.4,0,.2,1) both slide-in
+}
+
+::view-transition-old(main-nav):only-child {
+  animation: .25s cubic-bezier(.4,0,.2,1) both slide-out
+}
