@@ -1,10 +1,29 @@
 <div class="flex flex-col items-center">
-  <div class="player-background w-full max-w-lg mb-10 dark:bg-gray-800"
-  [ngStyle]="{'view-transition-name': 'playlist-background-' + this.padelId}">
-    <div class="">
+  <div class="player-background w-full max-w-lg mb-10 dark:bg-gray-800" [ngStyle]="{'view-transition-name': 'playlist-background-' + this.padelId}">
+    <div class="relative">
       <a class="flex flex-col items-center">
+        <!-- Player's Name -->
+        <div [ngStyle]="{'view-transition-name': 'nombre-' + jugador.id}" class="absolute top-10 w-full text-center z-10"> <!-- Adjust 'top' value as needed -->
+          <h5 class="text-5xl font-extrabold tracking-tight text-gray-900 dark:text-white">
+            {{jugador.nombre}}
+          </h5>
+        </div>
+
+        <div class="flex justify-center items-start w-full px-4 absolute top-32">
+          <!-- Number in the top-left corner -->
+          <span [ngStyle]="{'view-transition-name': 'numero-' + jugador.id}" class="mr-5 text-yellow-500 text-5xl font-bold">
+            {{ jugador.numero }}
+          </span>
+
+          <!-- Flag in the top-right corner -->
+          <span [ngStyle]="{'view-transition-name': 'bandera-' + jugador.id}" class="text-5xl text-gray-900 dark:text-white">
+            <span [innerHTML]="jugador.bandera"></span>
+          </span>
+        </div>
+
+        <!-- Player's Image -->
         <img
-          class="mt-8 rounded-t-lg"
+          class="mt-60 rounded-t-lg"
           [src]="jugador.src"
           alt="{{jugador.nombre}}"
           [ngStyle]="{'view-transition-name': 'jugador-' + this.padelId}"
@@ -12,16 +31,13 @@
       </a>
     </div>
     <div class="bg-white px-5 py-5 border-t-2">
-        <a>
-          <h5 class="text-3xl text-center font-semibold tracking-tight text-gray-900 dark:text-white">{{jugador.nombre}}</h5>
-        </a>
         <div class="flex items-center justify-center mt-5 mb-5">
-          <span class="text-xl ml-5 text-gray-900 dark:text-white" [innerHTML]="jugador.bandera"></span><span class="text-xl ml-5 text-gray-900 dark:text-white">{{jugador.nacimiento}}</span>
+          <span class="text-xl ml-5 text-gray-900 dark:text-white" [innerHTML]="jugador.bandera"></span>
+          <span class="text-xl ml-5 text-gray-900 dark:text-white">{{jugador.nacimiento}}</span>
         </div>
         <div class="flex items-center justify-center">
-          <span class="text-xl text-gray-900 dark:text-white" ></span>
+          <span class="text-xl text-gray-900 dark:text-white">{{jugador.puntos}}</span>
         </div>
     </div>
   </div>
 </div>
-

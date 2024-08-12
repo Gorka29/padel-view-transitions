@@ -4,12 +4,22 @@
   <h1 class="mb-4 text-5xl font-extrabold leading-none tracking-tight text-gray-900 md:text-6xl lg:text-6xl dark:text-white">World´s <span class="underline underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600">best</span> players</h1>
 </div>
 
-<div class="pb-4 flex flex-col items-center">
-  <div *ngFor="let jugador of jugadores" (click)="navigateToPhoto(jugador.id)"
+<!--<div class="pb-4 flex flex-col items-center">
+  <div *ngFor="let jugador of jugadores" (click)="navigateToPhoto(jugador.id)" class="player-background w-full max-w-lg mb-10 border border-gray-200 rounded-3xl shadow dark:bg-gray-800 dark:border-gray-700 " [ngStyle]="{'view-transition-name': 'playlist-background-' + jugador.id}">
     class="player-background w-full max-w-lg mb-10 border border-gray-200 rounded-3xl shadow dark:bg-gray-800 dark:border-gray-700 hover:scale-95 transform transition duration-300"
-    [ngStyle]="{'view-transition-name': 'playlist-background-' + jugador.id}">
-    <div>
+    <div class="relative">
       <a class="flex flex-col items-center">
+
+        <div class="flex justify-between items-center w-full px-4 absolute top-0">
+          <span class="text-yellow-500 text-2xl font-bold">
+            {{ jugador.numero }}
+          </span>
+
+          <span class="text-xl text-gray-900 dark:text-white">
+            <span class="text-xl ml-5 text-gray-900 dark:text-white" [innerHTML]="jugador.bandera"></span>
+          </span>
+        </div>
+
         <img
           class="mt-8 rounded-t-3xl"
           [src]="jugador.src"
@@ -18,17 +28,62 @@
         />
       </a>
     </div>
+
     <div class="bg-white px-5 py-5 border-t-2 rounded-b-3xl">
-        <a>
-          <h5 class="text-3xl text-center font-semibold tracking-tight text-gray-900 dark:text-white">{{jugador.nombre}}</h5>
-        </a>
-        <div class="flex items-center justify-center mt-5 mb-5">
-          <span class="text-xl ml-5 text-gray-900 dark:text-white" [innerHTML]="jugador.bandera"></span><span class="text-xl ml-5 text-gray-900 dark:text-white">{{jugador.nacimiento}}</span>
+      <a>
+        <h5 class="text-3xl text-center font-semibold tracking-tight text-gray-900 dark:text-white">{{jugador.nombre}}</h5>
+      </a>
+      <div class="flex items-center justify-center mt-5 mb-5">
+        <span class="text-xl ml-5 text-gray-900 dark:text-white" [innerHTML]="jugador.bandera"></span>
+        <span class="text-xl ml-5 text-gray-900 dark:text-white">{{jugador.nacimiento}}</span>
+      </div>
+      <div class="flex items-center justify-center">
+        <span class="text-xl text-gray-900 dark:text-white">{{jugador.puntos}}</span>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+
+
+
+<div class="pb-4 flex flex-col items-center">
+  <div *ngFor="let jugador of jugadores" (click)="navigateToPhoto(jugador.id)" class="player-background w-full max-w-lg mb-10 border border-gray-200 rounded-3xl shadow dark:bg-gray-800 dark:border-gray-700 " [ngStyle]="{'view-transition-name': 'playlist-background-' + jugador.id}">
+    <div class="relative">
+      <a class="flex flex-col items-center">
+
+        <div class="flex justify-between items-start w-full px-4 absolute top-10">
+          <!-- Flag in the top-right corner -->
+          <span [ngStyle]="{'view-transition-name': 'bandera-' + jugador.id}" class="ml-5 text-5xl text-gray-900 dark:text-white">
+            <span [innerHTML]="jugador.bandera"></span>
+          </span>
+
+          <!-- Number in the top-left corner -->
+          <span [ngStyle]="{'view-transition-name': 'numero-' + jugador.id}" class="mr-5 text-yellow-500 text-5xl font-bold">
+            {{ jugador.numero }}
+          </span>
         </div>
-        <div class="flex items-center justify-center">
-          <span class="text-xl text-gray-900 dark:text-white">{{jugador.puntos}}</span>
-        </div>
+
+        <img
+          class="mt-8 rounded-t-3xl"
+          [src]="jugador.src"
+          alt="{{jugador.nombre}}"
+          [ngStyle]="{'view-transition-name': 'jugador-' + jugador.id}"
+        />
+      </a>
+    </div>
+
+    <div class="bg-white px-5 py-5 border-t-2 rounded-b-3xl">
+      <a [ngStyle]="{'view-transition-name': 'nombre-' + jugador.id}" >
+        <h5 class="text-3xl text-center font-semibold tracking-tight text-gray-900 dark:text-white">{{jugador.nombre}}</h5>
+      </a>
+      <div class="flex items-center justify-center mt-5 mb-5">
+        <span class="text-xl ml-5 text-gray-900 dark:text-white" [innerHTML]="jugador.bandera"></span>
+        <span class="text-xl ml-5 text-gray-900 dark:text-white">{{jugador.nacimiento}}</span>
+      </div>
+      <div class="flex items-center justify-center">
+        <span class="text-xl text-gray-900 dark:text-white">{{jugador.puntos}}</span>
+      </div>
     </div>
   </div>
 </div>
-
