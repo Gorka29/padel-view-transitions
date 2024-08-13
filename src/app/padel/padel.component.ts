@@ -57,13 +57,13 @@ export class PadelComponent implements AfterViewInit {
 
   navigateToPhoto(id: number): void {
     this.scrollPositionService.setScrollPosition([window.scrollX, window.scrollY]);
-    console.log("Guardando coordenadas del scroll X e Y: " + [window.scrollX, window.scrollY]);
+    // console.log("Guardando coordenadas del scroll X e Y: " + [window.scrollX, window.scrollY]);
     this.router.navigate(['/padel', id]);
   }
 
   ngAfterViewInit(): void {
     const [x, y] = this.scrollPositionService.getScrollPosition();
-    console.log("Restaurando coordenadas del scroll X e Y: " + [x, y]);
+    // console.log("Restaurando coordenadas del scroll X e Y: " + [x, y]);
     window.scrollTo(x, y);
   }
 
