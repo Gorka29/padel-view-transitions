@@ -36,7 +36,7 @@
           <span class="text-xl ml-5 text-gray-900 dark:text-white">{{jugador.nacimiento}}</span>
         </div>
         <div class="flex items-center justify-center">
-          <span class="text-xl text-gray-900 dark:text-white">{{jugador.puntos}}</span>
+          <span [ngStyle]="{'view-transition-name': 'puntos-' + this.padelId}" class="text-xl text-gray-900 dark:text-white">{{jugador.puntos}}</span>
         </div>
     </div>
   </div>
