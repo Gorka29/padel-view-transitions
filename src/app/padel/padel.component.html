@@ -5,7 +5,7 @@
 </div>
 
 <div class="pb-4 flex flex-col items-center">
-  <div *ngFor="let jugador of jugadores" (click)="navigateToPhoto(jugador.id)" class="player-background w-full max-w-lg mb-10 border border-gray-200 rounded-3xl shadow-lg dark:bg-gray-800 dark:border-gray-700 " [ngStyle]="{'view-transition-name': 'playlist-background-' + jugador.id}">
+  <div *ngFor="let jugador of jugadores" (click)="navigateToPhoto(jugador.id)" class="player-background cursor-pointer w-full max-w-lg mb-10 border border-gray-200 rounded-3xl shadow-lg dark:bg-gray-800 dark:border-gray-700 " [ngStyle]="{'view-transition-name': 'playlist-background-' + jugador.id}">
     <div class="relative">
       <a class="flex flex-col items-center">
 
@@ -39,7 +39,7 @@
         <span class="text-xl ml-5 text-gray-900 dark:text-white">{{jugador.nacimiento}}</span>
       </div> -->
       <div class="flex items-center justify-center mt-3 mb-3">
-        <span class="text-xl text-gray-900 dark:text-white">{{jugador.puntos}}</span>
+        <span [ngStyle]="{'view-transition-name': 'puntos-' + jugador.id}" class="text-xl text-gray-900 dark:text-white">{{jugador.puntos}}</span>
       </div>
     </div>
   </div>
