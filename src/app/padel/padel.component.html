@@ -1,26 +1,15 @@
 <header style="view-transition-name: main-nav;" class="fade-up"></header>
 
-<div style="view-transition-name: main-title;" class="flex flex-col items-center justify-center text-center mb-10">
+<div style="view-transition-name: main-title;" class="flex flex-col items-center justify-center text-center mb-10 select-none">
   <h1 class="mb-4 text-5xl font-extrabold leading-none tracking-tight text-gray-900 md:text-6xl lg:text-6xl dark:text-white">World´s <span class="underline underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600">best</span> players</h1>
 </div>
 
 <div class="pb-4 flex flex-col items-center">
-  <div *ngFor="let jugador of jugadores" (click)="navigateToPhoto(jugador.id)" class="player-background cursor-pointer w-full max-w-lg mb-10 border border-gray-200 rounded-3xl shadow-lg dark:bg-gray-800 dark:border-gray-700 " [ngStyle]="{'view-transition-name': 'playlist-background-' + jugador.id}">
+  <div *ngFor="let jugador of jugadores" (click)="navigateToPhoto(jugador.id)"
+    class="player-background cursor-pointer w-full max-w-lg mb-10 border border-gray-200 rounded-3xl shadow-lg dark:bg-gray-800 dark:border-gray-700 hover:scale-95 transform transition duration-300"
+    [ngStyle]="{'view-transition-name': 'playlist-background-' + jugador.id}">
     <div class="relative">
-      <a class="flex flex-col items-center">
-
-        <div class="flex justify-between items-start w-full px-4 absolute top-10">
-          <!-- Flag in the top-right corner -->
-          <span [ngStyle]="{'view-transition-name': 'bandera-' + jugador.id}" class="ml-5 text-5xl text-gray-900 dark:text-white">
-            <span [innerHTML]="jugador.bandera"></span>
-          </span>
-
-          <!-- Number in the top-left corner -->
-          <span [ngStyle]="{'view-transition-name': 'numero-' + jugador.id}" class="mr-5 text-yellow-500 text-5xl font-bold">
-            {{ jugador.numero }}
-          </span>
-        </div>
-
+      <a class="flex flex-col items-center select-none">
         <img
           class="mt-8 rounded-t-3xl"
           [src]="jugador.src"
