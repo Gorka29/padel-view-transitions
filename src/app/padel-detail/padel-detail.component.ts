@@ -58,10 +58,13 @@ export class PadelDetailComponent {
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.padelId = +params['id'];
-      console.log(`ID recibido: ${this.padelId}`);
+      // console.log(`ID recibido: ${this.padelId}`);
 
       this.jugador = this.jugadores.find(r => r.id === this.padelId);
-      console.log('Registro encontrado:', this.jugador);
+      // console.log('Registro encontrado:', this.jugador);
     });
+
+    // Mover el scroll al inicio de la página
+    window.scrollTo(0, 0.1069);
   }
 }

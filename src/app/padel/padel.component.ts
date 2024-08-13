@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { DomSanitizer } from '@angular/platform-browser';
 import { HeaderComponent } from "../header/header.component";
+import { ScrollPositionService } from '../scroll-position.service';
 
 @Component({
   selector: 'app-padel',
@@ -11,7 +12,7 @@ import { HeaderComponent } from "../header/header.component";
   templateUrl: './padel.component.html',
   styleUrl: './padel.component.scss'
 })
-export class PadelComponent {
+export class PadelComponent implements AfterViewInit {
 
   jugadores = [
     {
@@ -52,10 +53,21 @@ export class PadelComponent {
     }
   ];
 
-  constructor(private router: Router, private sanitizer: DomSanitizer) {}
+  constructor(private router: Router, private sanitizer: DomSanitizer, private scrollPositionService: ScrollPositionService) {}
 
   navigateToPhoto(id: number): void {
+    this.scrollPositionService.setScrollPosition([window.scrollX, window.scrollY]);
+    console.log("Guardando coordenadas del scroll X e Y: " + [window.scrollX, window.scrollY]);
     this.router.navigate(['/padel', id]);
+  }
+
+  ngAfterViewInit(): void {
+    const [x, y] = this.scrollPositionService.getScrollPosition();
+    console.log("Restaurando coordenadas del scroll X e Y: " + [x, y]);
+
+    setTimeout(() => {
+      window.scrollTo(x, y);
+    }, 0);
   }
 
 }
