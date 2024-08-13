@@ -64,10 +64,7 @@ export class PadelComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     const [x, y] = this.scrollPositionService.getScrollPosition();
     console.log("Restaurando coordenadas del scroll X e Y: " + [x, y]);
-
-    setTimeout(() => {
-      window.scrollTo(x, y);
-    }, 0);
+    window.scrollTo(x, y);
   }
 
 }
